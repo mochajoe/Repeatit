@@ -67,7 +67,7 @@ and then from within the root directory:
 ```
 node server.js
 ```
-## Team
+## Authors
 
   - __Product Owner__: Andrew Foresi
   - __Scrum Master__: Himanshu Pant
