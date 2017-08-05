@@ -2,6 +2,9 @@
 
 Repeat.it is a web app that allows users to create and study flashcards online. After signing into Repeat.it, users can create flashcard decks, edit existing decks, study their decks in random order and delete any decks they no longer need. A unique feature of Repeat.it is the ability to style cards as code, allowing them to create flashcards for studying various programming language snippets.
 
+#### Here is a quick demo of the app in action
+![repeatit demo](https://goo.gl/BtHvKp "a quick demo of repeatit")
+
 
 ## Table of Contents
 
