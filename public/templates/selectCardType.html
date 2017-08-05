@@ -1,0 +1,37 @@
+Select card type section  -->
+  <div class = "row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading panel-default text-center">Select a Deck Type</div>
+          <div class="panel-body text-center">
+            <div class="row">
+              <div class="btn btn-lg button-block x-btn-card-type" ng-class="$ctrl.styleClasses.basic" ng-click="$ctrl.setCardType('basic')" ng-mouseenter="$ctrl.styleClasses.basic = 'btn-success'" ng-mouseleave="$ctrl.styleClasses.basic = 'btn-primary'">Basic</div>
+            </div>
+
+            <div class="row">
+              <div class="btn btn-lg button-block x-btn-card-type" ng-class="$ctrl.styleClasses.multipleChoice" ng-click="$ctrl.setCardType('multiple choice')" ng-mouseenter="$ctrl.styleClasses.multipleChoice = 'btn-success'" ng-mouseleave="$ctrl.styleClasses.multipleChoice = 'btn-primary'">Multiple Choice
+              </div>
+            </div>
+
+            <!-- Implement these later if time allows -->
+          <!--   <div class="row">
+              <div class="btn  btn btn-outline-primary x-btn-card-type" ng-click="$ctrl.setCardType('image')">Image</div>
+            </div>
+
+            <div class="row">
+              <div class="btn  btn tn-outline-primary
+              x-btn-card-type" ng-click="$ctrl.setCardType('true/false')">True/False</div>
+            </div>
+            <div class="row">
+              <div class="btn btn tn-outline-primary x-btn-card-type" ng-click="$ctrl.setCardType('short answer')">Short Answer</div>
+            </div> -->
+          </div>
+
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <!-- END OF Select card type section

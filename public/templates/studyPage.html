@@ -1,0 +1,84 @@
+<div class="container" ng-controller="StudyCtrl as study">
+  <div class="row">
+    <div class="col-md-2 col-md-offset-1">
+      <progress-tracker />
+    </div>
+
+  <div class="col-md-6" class="flip" ng-if="!study.theEnd">
+    <div class="card panel panel-default" ng-class="{'flipped':study.flipped}" ng-click="study.handleFlipBasic()">
+      <div class="studycard face front panel-body" ng-if="study.front">
+        <h3>{{ study.current.data.question }}</h3>
+
+        <!-- Multiple Choice Options -->
+        <div class="row text-center" ng-show="study.deck.cardType === 'multiple choice'">
+          <h4>
+            <span class="label" ng-class="study.answersStyle.a" ng-click="study.handleFlipMC('a')" ng-mouseenter="study.answersStyle.a = 'label-success'" ng-mouseleave="study.answersStyle.a = 'label-default'">{{'A: ' + study.current.data.options.a}}
+            </span>
+          </h4>
+
+
+
+          <h4>
+            <span class="label" ng-class="study.answersStyle.b" ng-mouseenter="study.answersStyle.b = 'label-success'" ng-mouseleave="study.answersStyle.b = 'label-default'" ng-click="study.handleFlipMC('b')">{{'B: ' + study.current.data.options.b}}
+            </span>
+          </h4>
+
+          <h4>
+            <span class="label" ng-show="study.current.data.options.c" ng-class="study.answersStyle.c" ng-mouseenter="study.answersStyle.c = 'label-success'" ng-mouseleave="study.answersStyle.c = 'label-default'" ng-click="study.handleFlipMC('c')">{{'C: ' + study.current.data.options.c}}
+            </span>
+          </h4>
+
+          <h4>
+            <span class="label" ng-show="study.current.data.options.d" ng-class="study.answersStyle.d" ng-mouseenter="study.answersStyle.d = 'label-success'" ng-mouseleave="study.answersStyle.d = 'label-default'" ng-click="study.handleFlipMC('d')">{{'D: ' + study.current.data.options.d}}
+            </span>
+          </h4>
+
+          <h4>
+            <span class="label" ng-show="study.current.data.options.e" ng-class="study.answersStyle.e" ng-mouseenter="study.answersStyle.e = 'label-success'" ng-mouseleave="study.answersStyle.e = 'label-default'" ng-click="study.handleFlipMC('e')">{{'E: ' + study.current.data.options.e}}
+            </span>
+          </h4>
+        </div>
+      </div>
+      <div class="studycard face back panel-body" ng-if="!study.front">
+        <h3>{{ study.current.data.answer }}</h3>
+
+        <!-- Multiple Choice Answer Data -->
+        <div class="row text-center" ng-show="study.deck.cardType === 'multiple choice'" ng-click="study.handleFlipMC('ans')">
+          <h1>
+            <span class="label" ng-class="study.correctAnswerStyle">
+              {{study.answerMessage}}
+            </span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-6" class="the-end-card" ng-if="study.theEnd">
+      <div class="studycard face front">
+        <h2 class="deck-finished-message"> Schweet!</h2>
+        <h3 class="deck-finished-generic-message"> You've finished the deck. </h3>
+        <div class="" ng-if="study.theEnd">
+          <button type="button" class="btn btn-primary" id="start-over" ng-click="study.startOver()"> Start Over </button>
+        </div>
+      </div>
+    </div>
+  </div><!-- END of main row -->
+
+
+  <div class="row">
+    <div class="divParent">
+      <div class="text-center col-xs-4">
+        <div class="btn-group" role="group" ng-if="!study.theEnd">
+        <button type="button" class="btn btn-default btn-info" id="previous" ng-disabled="!study.showPrev" ng-click="study.handlePrev()">Previous card</button>
+        <button type="button" class="btn btn-default btn-primary" id="next" ng-disabled="!study.showNext" ng-click="study.handleNext()">Next card</button>
+        </div>
+      </div>
+
+      <div class="text-center col-xs-4">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default" id="save" ng-click="study.handleSave()">Save and quit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

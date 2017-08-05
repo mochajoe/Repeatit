@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-5 flashcard">
+    <h4>Question</h4>
+      <hr>
+      <div>
+        <form name="form" ng-submit="$ctrl.uploadUserPhoto(photo)" ng-if="!$ctrl.isHidden">
+          <input ng-model="photo" type="text" name="cardphoto" id="cardphoto" class="input-box form-control" placeholder="Web link for card image" required/>
+        <div class="upload-photo">
+          <button class="btn btn-xs center-block change-photo-button" ng-click="$ctrl.toggleUploadPhoto()"> Add Image </button>
+        </div>
+        </form>
+      </div>
+  </div>
+</div>
+

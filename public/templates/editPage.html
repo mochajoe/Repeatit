@@ -1,0 +1,96 @@
+<div ng-controller="EditPageCtrl as edit">
+
+  <div class="container">
+
+  <div>
+    <h3>DECK NAME: <input ng-model="edit.deck.deckname"/>
+      <i class="fa fa-plus-circle" id="parentOfOnClickShowSavedForUserSide" ng-click="edit.handleEditAndSave();" >
+        <span ng-show="edit.showme" id="onClickShowSavedForUserSide">saved</span>
+      </i>
+    </h3>
+  </div>
+
+  <!-- Card types: use components for each type of card -->
+  <div class="card-type-div" >
+    <card-basic ng-show="edit.deck.cardType === 'basic'" card="edit.defaultCardData.basic" editable="true" populate-card="edit.populateCard"/>
+  </div>
+
+  <div class="card-type-div">
+    <card-multiple-choice editable="true" card="edit.defaultCardData.multipleChoice" ng-show="edit.deck.cardType === 'multiple choice'" populate-card="edit.populateCard"/>
+  </div>
+
+  <!-- OLD CODE- hard coded card front/back in this file.  Use new components. -->
+   <!--  <div class="row"> -->
+      <!-- Front of flashcard -->
+     <!--  <div class="col-xs-5 flashcard">
+        <h4>Question</h4>
+        <hr>
+        <textarea placeholder="Enter a question" ng-model="edit.newCard.front" id="editQuestionField"></textarea>
+      </div>
+ -->
+
+      <!-- Back of flashcard -->
+    <!--   <div class="col-xs-5 flashcard">
+        <h4>Answer</h4>
+        <hr>
+        <textarea placeholder="Enter the answer" ng-keyup="$event.keyCode == 13 && edit.addCard(edit.newCard)" ng-model="edit.newCard.back"></textarea>
+      </div>
+    </div> -->
+
+    <!--Button to add card now lives in each card component -->
+<!--
+    <button class="btn btn-primary" ng-click="edit.addCard(edit.newCard)">Add card</button> -->
+
+    <hr> <!-- Start of list of currently made cards -->
+
+    <div ng-repeat="card in edit.deck.cards" >
+      <div class="card-type-div" >
+        <card-basic editable="true" hide-submit="true" card="card.data" ng-show="edit.deck.cardType === 'basic'"/>
+      </div>
+
+      <div class="card-type-div">
+        <card-multiple-choice editable="true" hide-submit="true" card="card.data" ng-show="edit.deck.cardType === 'multiple choice'"/>
+      </div>
+
+
+      <!-- OLD hard coded card DOM - use new components. -->
+      <!-- <div class="row">
+        <div class="col-xs-5 flashcard">
+          <h4>Question</h4>
+
+          <div class="codeToggleBtn">
+            <button ng-click="edit.toggleHighlightFront(card)" ng-class="{'btn': card.plaintextFront, 'btn btn-primary': !card.plaintextFront}">
+              <span class="fa fa-code"></span>
+            </button>
+          </div>
+
+          <hr>
+          <textarea placeholder="Enter a question" ng-model="card.front"></textarea>
+        </div>
+
+        <div class="col-xs-5 flashcard">
+          <h4>Answer</h4>
+
+          <div class="codeToggleBtn">
+            <button ng-click="edit.toggleHighlightBack(card)" ng-class="{'btn': card.plaintextBack, 'btn btn-primary': !card.plaintextBack}">
+              <span class="fa fa-code"></span>
+            </button>
+          </div>
+
+          <hr>
+          <textarea placeholder="Enter the answer" ng-model="card.back"></textarea>
+        </div>
+      </div> -->
+
+      <button class="btn btn-danger" ng-click="edit.deleteCard(card)">Delete card</button>
+      <button class="btn" ng-click="edit.moveUp(card)"><span class="fa fa-angle-up"></span></button>
+      <button class="btn" ng-click="edit.moveDown(card)"><span class="fa fa-angle-down"></span></button>
+
+
+
+    </div> <!-- end ng-repeat div -->
+
+    <button class="btn btn-primary savedeckbtn" type="button" ng-click="edit.handleSave()">Save changes to this deck</button>
+
+  </div>
+</div>

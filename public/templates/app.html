@@ -1,0 +1,34 @@
+<!-- Changes: add ability to choose a category -->
+<div ng-controller="AppCtrl as app" class="container">
+  <h3>Choose a Category</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <tr ng-repeat="group in app.categories" class="deck-list-entry">
+      <td class="category" ng-click="app.getGroupDecks(group)">{{ group.group }}</td>
+    </tr>
+
+    <tr><h5 ng-if="app.decks.length === 0">No saved decks, create a new deck to get started!</h5></tr>
+
+  </table>
+
+  <div ng-if="app.show">
+    <h3>Choose a deck</h3>
+    <table class="table table-striped table-bordered table-hover">
+      <tr class="choose-deck-table-titles">
+        <td>Deck Name</td>
+        <td>Category</td>
+      </tr>
+      <tr ng-if="app.decks.length !== 0" ng-repeat="deck in app.decks track by $index" class="deck-list-entry">
+        <td>{{ deck.deckname }}</td>
+        <td>{{ deck.groupname }}</td>
+        <td><button class="buttonInTable btn btn-primary" ng-click="app.getDeck(deck)"><a class="clickButton" href="/study">Study</a></button></td>
+        <td><button class="buttonInTable btn btn-info" ng-click="app.getDeck(deck)"><a class="clickButton" href="/edit">Edit</a></button></td>
+        <td><button class="deletekey buttonInTable btn btn-danger" ng-click="app.handleDelete(deck)">Delete</button></td>
+      </tr>
+
+      <tr><h5 ng-if="app.decks.length === 0">No saved decks, create a new deck to get started!</h5></tr>
+
+    </table>
+  </div>
+
+  <a href="/create"><button class="btn btn-info">Create a new deck</button></a>
+</div>

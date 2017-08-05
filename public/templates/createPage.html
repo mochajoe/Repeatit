@@ -1,0 +1,71 @@
+<div ng-controller="CreatePageCtrl as create">
+
+  <div class="container">
+
+  <!-- Buttons to select card type -->
+<!--   <ng-include src="selectCardType.html">
+  </ng-include> -->
+  <div ng-show="!create.typeSelected">
+    <select-card-type ng-show="!create.typeSelected" set-card-type="create.setCardType"/>
+  </div>
+
+
+
+
+
+  <!-- Main Section is hidden until card type is selected. -->
+
+  <div class="create-main-section" ng-show="create.typeSelected">
+    <h4>DECK NAME:  </h4><span>  <input class="create-type" placeholder="Enter a deck name" ng-model="create.newDeck.deckname" required />
+
+    <h4>CATEGORY:</h4> <span> <input class="create-type" placeholder="Enter category" ng-model="create.newDeck.groupname" required /> </span>
+
+    <!-- The row here is to show a message on card submit (not implemented yet) -->
+    <div class="row text-center" ng-show="create.showSubmitMsg">
+      <h3>
+        <span class="label label-warning">
+          Card Submitted!
+        </span>
+      </h3>
+    </div>
+
+    <!-- All card types -->
+    <div class="card-type-div" class="card-area">
+      <card-basic populate-card="create.populateCard" ng-show="create.newDeck.cardType === 'basic'"/>
+    </div>
+
+    <div class="card-type-div">
+      <card-multiple-choice populate-card="create.populateCard" editable="true" card="create.defaultCardData.multipleChoice" ng-show="create.newDeck.cardType === 'multiple choice'"/>
+    </div>
+
+
+    <!-- Moved add card button to each card type controller -->
+
+    <!--   <button class="btn btn-primary" ng-click="create.addCard(create.newCard)">Add card</button> -->
+
+
+      <hr> <!-- Start of list of currently made cards -->
+
+      <div ng-repeat="card in create.newDeck.cards" >
+        <!-- All card types -->
+        <div class="card-type-div">
+          <card-basic populate-card="create.populateCard" card="card.data" hide-submit="true" ng-show="create.newDeck.cardType === 'basic'"/>
+        </div>
+
+        <div class="card-type-div">
+          <card-multiple-choice populate-card="create.populateCard" card="card.data" editable="true" hide-submit="true" ng-show="create.newDeck.cardType === 'multiple choice'"/>
+        </div>
+
+
+
+        <button class="btn btn-danger" ng-click="create.deleteCard(card)">Delete card</button>
+        <button class="btn" ng-click="create.moveUp(card)"><span class="fa fa-angle-up"></span></button>
+        <button class="btn" ng-click="create.moveDown(card)"><span class="fa fa-angle-down"></span></button>
+
+
+      </div> <!-- end ng-repeat div -->
+
+      <button class="btn btn-success savedeckbtn" type="button" ng-click="create.handleSave()">Save the deck</button>
+    </div>
+  </div>
+</div>

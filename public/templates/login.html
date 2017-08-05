@@ -1,0 +1,116 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Repeat.it</h1>
+    <p class="lead">A simple flashcard app to accelerate learning</p>
+  </div>
+</div>
+<div class="container loginContainer" ng-controller="LoginCtrl as login">
+  <div class="row">
+    <form class="accCreationForm col-xs-12 col-md-6 vertical-centered centered">
+      <h4>Create a New Account</h4>
+      <input id="accName" type="email" placeholder="enter email" ng-model="login.accName"/>
+      <br />
+      <input id="accPw" type="password" placeholder="password" ng-model="login.accPw"/>
+      <br />
+      <input id="accVerifyPw" type="password" placeholder="verify password" ng-model="login.accVerifyPw"/>
+      <br />
+      <button ng-click="login.signup()" class="btn btn-primary hover-green">Sign Up</button>
+    </form>
+    <form class="loginForm col-xs-12 col-md-4 vertical-centered centered">
+      <h4>Login</h4>
+      <input id="loginName" type="email" placeholder="email" ng-model="login.loginName"/>
+      <br />
+      <input id="loginPw" type="password" placeholder="password" ng-model="login.loginPw"/>
+      <br />
+
+      <button class="btn btn-primary hover-green" ng-click="login.login()">Log In</button>
+      <div class="forgot-password" ng-click="login.processForgotPassword()">Forgot Password?</div>
+
+    </form>
+</div>
+
+<div class="login-alerts-section">
+  <!-- Show an alert if login fails -->
+  <div class="row text-center">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-show="login.showBadLogin">
+      <button type="button" class="close" aria-label="Close" ng-click="login.showBadLogin = false;">
+        <span aria-hidden="true">×</span>
+      </button>
+      <strong>Bummer!  </strong>
+      Your Username or Password is incorrect.
+    </div>
+  </div>
+
+  <!-- Show an alert if user requests a PW reset without 1 login attempt -->
+  <div class="row text-center">
+    <div class="alert alert-warning alert-dismissible fade in" role="alert" ng-show="login.showPleaseTry">
+      <button type="button" class="close" aria-label="Close" ng-click="login.showPleaseTry = false;">
+        <span aria-hidden="true">×</span>
+      </button>
+      <strong>Wait a Sec,  </strong>
+      Please try to log in at least once with a valid email first.
+    </div>
+  </div>
+
+  <!-- Show an alert if the reset code was sent -->
+  <div class="row text-center">
+    <div class="alert alert-success alert-dismissible fade in" role="alert" ng-show="login.showEmailSent">
+      <button type="button" class="close" aria-label="Close" ng-click="login.showEmailSent = false;">
+        <span aria-hidden="true">×</span>
+      </button>
+      <strong>You got it!  </strong>
+      {{'A password reset email was sent to ' + currentUserEmail + '!'}}
+    </div>
+  </div>
+</div>
+
+
+
+<!-- RESET PASSWORD -->
+<div class="row text-center">
+
+  <div ng-if="show">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">Reset Password</h4>
+      </div>
+      <div class="panel-body">
+        <form class="accCreationForm">
+
+          <input id="resetCode" type="text" placeholder="Enter reset code" ng-model="login.resetCode"/>
+          <br />
+          <input id="newPassword" type="password" placeholder="Enter new password" ng-model="login.newPassword"/>
+          <br />
+          <input id="newPasswordConfirm" type="password" placeholder="Confirm new password" ng-model="login.newPasswordConfirm"/>
+          <br />
+          <button class="btn btn-primary" ng-click="login.reset()">Reset</button>
+        </form>
+
+        <!-- Put alert messages here associated with ResetPassword -->
+        <div class="reset-alerts-section">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <!-- <div ng-if="app.show">
+    <form class="loginForm col-xs-12 col-md-6">
+      <h4>Reset Password</h4>
+      <input id="resetCode" type="text" placeholder="Enter reset code"/>
+      <br />
+      <input id="newPassword" type="text" placeholder="Enter new password"/>
+      <br />
+      <input id="newPasswordConfirm" type="text" placeholder="Confirm new password"/>
+      <br />
+      <button class="btn btn-primary"">Submit</button>
+    </form>
+  </div> -->
+
+</div>

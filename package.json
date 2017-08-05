@@ -1,0 +1,26 @@
+{
+  "name": "team-vulcan",
+  "version": "1.0.0",
+  "description": "Greenfield Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js",
+    "lint": "eslint ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "eslint": "^4.0.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.8",
+    "nodemailer": "^4.0.1",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.1.0"
+  }
+}

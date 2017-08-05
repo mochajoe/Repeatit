@@ -1,0 +1,12 @@
+<div class="col-xs-5 flashcard">
+  <h4>Question</h4>
+
+  <div class="codeToggleBtn">
+    <button ng-click="create.toggleHighlightFront(card)" ng-class="{'btn': card.plaintextFront, 'btn btn-primary': !card.plaintextFront}">
+      <span class="fa fa-code"></span>
+    </button>
+  </div>
+
+  <hr>
+  <textarea placeholder="Enter a question" ng-model="card.front" ></textarea>
+</div>

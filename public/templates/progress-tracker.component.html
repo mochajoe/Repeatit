@@ -1,0 +1,9 @@
+<div class="">
+  <div class="progress-bar"></div>
+  <div class="progress-text">
+    <p>Progress</p>
+    <p>{{ model.curCard + '/' + model.totalCards }}</p>
+    <progress value="{{model.curCard}}" max="{{model.totalCards}}"></progress>
+    <button class="btn btn-primary" ng-click="model.shuffleDeck()"> Shuffle </button>
+  </div>
+</div>
