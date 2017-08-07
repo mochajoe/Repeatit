@@ -108,7 +108,7 @@ angular.module('flash-card')
     this.resetCode = Math.floor(Math.random() * 1000000);
     $scope.resetCode = this.resetCode;
     var that = this;
-    $http.post('http://localhost:3000/forgotpassword', JSON.stringify({email: $scope.currentUserEmail, resetCode: this.resetCode})).then(function(){
+    $http.post('/forgotpassword', JSON.stringify({email: $scope.currentUserEmail, resetCode: this.resetCode})).then(function(){
         // alert("A password reset code has been sent to " + $scope.currentUserEmail);
 
         $("body").css("cursor", "auto");
@@ -125,7 +125,7 @@ angular.module('flash-card')
 })
 .service('loginSvc', function($http) {
   this.login = function(username, password, callback) {
-    var url = 'http://localhost:3000/login';
+    var url = '/login';
     $http.post(url, JSON.stringify({username: username, password:password}))
       .then(function successCallback(response) {
         callback(response);
@@ -135,7 +135,7 @@ angular.module('flash-card')
       });
   };
   this.signup = function(username, password, callback) {
-    var url = 'http://localhost:3000/signup';
+    var url = '/signup';
     $http.post(url, JSON.stringify({username: username, password:password}))
       .then(function successCallback(response) {
         callback(response);
@@ -145,7 +145,7 @@ angular.module('flash-card')
       });
   };
   this.reset = function(username, newPassword, userResetCode, systemResetCode, callback) {
-    var url = 'http://localhost:3000/reset';
+    var url = '/reset';
     $http.post(url, JSON.stringify({username: username, password: newPassword, userResetCode: userResetCode, systemResetCode: systemResetCode}))
       .then(function successCallback(response) {
         callback(response);

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-
-mongooseURI = 'mongodb://localhost/flashcardsdb';
+mongooseURI = 'mongodb://repeaty:qwertyuiopasdfghjklzxcvbnm@ds129153.mlab.com:29153/repeatit';
+// mongodb://localhost/flashcardsdb';
 
 mongoose.connect(mongooseURI);
 

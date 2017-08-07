@@ -1,7 +1,10 @@
 {
-  "name": "team-vulcan",
+  "name": "repeatit",
   "version": "1.0.0",
-  "description": "Greenfield Project",
+  "engines": {
+    "node": ">=6.11.1"
+  },
+  "description": "Repeat It flashcards app",
   "main": "server.js",
   "scripts": {
     "test": "test",
@@ -16,7 +19,7 @@
     "eslint": "^4.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "express": "^4.15.3",
-    "mongoose": "^4.10.8",
+    "mongoose": "^4.11.5",
     "nodemailer": "^4.0.1",
     "nodemon": "^1.11.0"
   },
